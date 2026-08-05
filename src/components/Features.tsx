@@ -37,15 +37,15 @@ const FEATURES: { icon: LucideIcon; title: string; description: string }[] = [
 export default function Features() {
   return (
     <section id="features" className="relative py-28 sm:py-36 overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40rem] h-72 bg-vortex-green/5 blur-[120px] rounded-full" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40rem] h-72 bg-vortex-purple/5 blur-[120px] rounded-full" />
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <p className="reveal text-vortex-green font-mono text-xs tracking-[0.3em] uppercase mb-5">
+          <p className="reveal text-vortex-purple font-mono text-xs tracking-[0.3em] uppercase mb-5">
             // Why VORTEX
           </p>
           <h2 className="reveal font-display font-bold text-white text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
-            Learning <span className="text-vortex-green text-glow">Features</span>
+            Learning <span className="text-vortex-purple text-glow">Features</span>
           </h2>
           <p className="reveal mt-6 text-lg text-vortex-gray/70" data-reveal-delay="100">
             What makes a VORTEX education different — built for the AI era, end to end.
@@ -58,7 +58,7 @@ export default function Features() {
             return (
               <div
                 key={f.title}
-                className="reveal group relative overflow-hidden rounded-3xl glass-light p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-vortex-green/30 hover:bg-white/[0.06]"
+                className="reveal group relative overflow-hidden rounded-3xl glass-light p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-vortex-purple/30 hover:bg-white/[0.06]"
                 data-reveal-delay={(i % 3) * 100}
               >
                 {/* number watermark */}
@@ -67,8 +67,8 @@ export default function Features() {
                 </span>
 
                 <div className="relative">
-                  <div className="w-12 h-12 rounded-xl bg-vortex-green/10 border border-vortex-green/20 grid place-items-center transition-all duration-500 group-hover:bg-vortex-green/20 group-hover:scale-110">
-                    <Icon className="w-6 h-6 text-vortex-green" strokeWidth={1.5} />
+                  <div className="w-12 h-12 rounded-xl bg-vortex-purple/10 border border-vortex-purple/20 grid place-items-center transition-all duration-500 group-hover:bg-vortex-purple/20 group-hover:scale-110">
+                    <Icon className="w-6 h-6 text-vortex-purple" strokeWidth={1.5} />
                   </div>
                   <h3 className="mt-5 font-display font-semibold text-white text-lg">
                     {f.title}
@@ -79,7 +79,7 @@ export default function Features() {
                 </div>
 
                 {/* bottom glow line */}
-                <div className="absolute bottom-0 left-7 right-7 h-px bg-gradient-to-r from-transparent via-vortex-green/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-7 right-7 h-px bg-gradient-to-r from-transparent via-vortex-purple/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             );
           })}

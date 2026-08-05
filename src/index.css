@@ -17,7 +17,7 @@
     overflow-x: hidden;
   }
   ::selection {
-    background: rgba(118, 245, 0, 0.3);
+    background: rgba(139, 92, 246, 0.35);
     color: #fff;
   }
 }
@@ -35,22 +35,43 @@
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.06);
   }
+
+  /* Site-wide gradient — purple theme */
   .text-gradient {
+    background: linear-gradient(120deg, #fff 0%, #8B5CF6 50%, #C084FC 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Institute-only gradient — keeps green */
+  .text-gradient-green {
     background: linear-gradient(120deg, #fff 0%, #76F500 50%, #fff 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  /* Site-wide glow — purple */
   .text-glow {
+    text-shadow: 0 0 24px rgba(139, 92, 246, 0.55);
+  }
+
+  /* Institute-only glow — green */
+  .text-glow-green {
     text-shadow: 0 0 24px rgba(118, 245, 0, 0.45);
   }
+
+  /* Site-wide grid — purple tint */
   .grid-bg {
     background-image:
-      linear-gradient(rgba(118, 245, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(118, 245, 0, 0.04) 1px, transparent 1px);
+      linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
   }
+
   .noise-bg {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
   }
@@ -67,7 +88,7 @@
   transform: translateY(0);
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar — purple */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -75,11 +96,11 @@
   background: #0B0B0B;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(118, 245, 0, 0.3);
+  background: rgba(139, 92, 246, 0.35);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(118, 245, 0, 0.5);
+  background: rgba(139, 92, 246, 0.6);
 }
 
 @media (prefers-reduced-motion: reduce) {

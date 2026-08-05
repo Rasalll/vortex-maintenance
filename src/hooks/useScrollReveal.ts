@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 /**
  * Adds the `is-visible` class to any element with the `reveal` class
  * when it scrolls into view. One-shot (elements stay visible after reveal).
+ * Runs on dependency trigger when navigating pages so newly rendered elements get reveal checks.
  */
-export function useScrollReveal() {
+export function useScrollReveal(triggerDependency?: any) {
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
     if (!('IntersectionObserver' in window)) {
@@ -27,5 +28,5 @@ export function useScrollReveal() {
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [triggerDependency]);
 }

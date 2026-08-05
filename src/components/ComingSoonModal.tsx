@@ -28,21 +28,21 @@ export default function ComingSoonModal({ title, open, onClose }: Props) {
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-md rounded-3xl glass border border-vortex-green/30 shadow-glow-lg animate-scale-in overflow-hidden z-10">
+      <div className="relative w-full max-w-md rounded-3xl glass border border-vortex-purple/30 shadow-glow-lg animate-scale-in overflow-hidden z-10">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full glass-light grid place-items-center text-vortex-gray hover:text-vortex-green transition-colors"
+          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full glass-light grid place-items-center text-vortex-gray hover:text-vortex-purple transition-colors"
           aria-label="Close"
         >
           <X className="w-4 h-4" />
         </button>
 
         <div className="relative px-8 py-12 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-vortex-green/10 border border-vortex-green/30 mb-6">
-            <Clock className="w-8 h-8 text-vortex-green" strokeWidth={1.5} />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-vortex-purple/10 border border-vortex-purple/30 mb-6">
+            <Clock className="w-8 h-8 text-vortex-purple" strokeWidth={1.5} />
           </div>
 
-          <div className="inline-flex items-center gap-2 text-vortex-green font-mono text-[11px] tracking-[0.25em] uppercase mb-3 font-medium">
+          <div className="inline-flex items-center gap-2 text-vortex-purple font-mono text-[11px] tracking-[0.25em] uppercase mb-3 font-medium">
             <Sparkles className="w-3.5 h-3.5" />
             Upcoming Service
           </div>
@@ -51,7 +51,7 @@ export default function ComingSoonModal({ title, open, onClose }: Props) {
             {title}
           </h3>
 
-          <p className="mt-4 text-3xl font-display font-bold text-vortex-green text-glow tracking-tight">
+          <p className="mt-4 text-3xl font-display font-bold text-vortex-purple text-glow tracking-tight">
             Upcoming
           </p>
 
@@ -61,7 +61,7 @@ export default function ComingSoonModal({ title, open, onClose }: Props) {
 
           <button
             onClick={onClose}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-vortex-green px-7 py-3 text-sm font-semibold text-vortex-black transition-all duration-300 hover:shadow-glow hover:scale-105"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-vortex-purple px-7 py-3 text-sm font-semibold text-vortex-black transition-all duration-300 hover:shadow-glow hover:scale-105"
           >
             Got it
           </button>

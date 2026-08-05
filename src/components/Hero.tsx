@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowDown, Sparkles, Cpu } from 'lucide-react';
+import { ArrowDown, Cpu } from 'lucide-react';
 import { useMousePosition } from '@/hooks/useMousePosition';
 
 export default function Hero() {
@@ -26,21 +26,21 @@ export default function Hero() {
         <source src="/src/public/video/14141391_1920_1080_30fps.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark Overlay with Gradient */}
+      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-vortex-black/50 pointer-events-none" />
 
-      {/* Animated background orbs */}
+      {/* Animated background orbs — purple */}
       <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] rounded-full bg-vortex-green/20 blur-[120px] animate-pulse-glow"
+          className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] rounded-full bg-vortex-purple/20 blur-[120px] animate-pulse-glow"
           style={{ transform: `translate(${mouse.x * 30}px, ${mouse.y * 30}px)` }}
         />
         <div
-          className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] rounded-full bg-vortex-green/10 blur-[140px] animate-float-slow"
+          className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] rounded-full bg-vortex-purple/10 blur-[140px] animate-float-slow"
           style={{ transform: `translate(${mouse.x * -40}px, ${mouse.y * -40}px)` }}
         />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full border border-vortex-green/10 animate-spin-slower" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[26rem] h-[26rem] rounded-full border border-vortex-green/10 animate-spin-slow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full border border-vortex-purple/10 animate-spin-slower" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[26rem] h-[26rem] rounded-full border border-vortex-purple/10 animate-spin-slow" />
       </div>
 
       {/* Vignette */}
@@ -48,9 +48,6 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-5 sm:px-8 text-center pt-24 pb-20">
-        {/* Badge */}
-      
-
         {/* Company name */}
         <h1
           className={`font-display font-bold tracking-tight text-white text-5xl sm:text-7xl lg:text-8xl leading-[1.05] transition-all duration-700 delay-100 ${
@@ -69,7 +66,7 @@ export default function Hero() {
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          Learn Today. <span className="text-vortex-green text-glow">Lead Tomorrow.</span>
+          Learn Today. <span className="text-vortex-purple text-glow">Lead Tomorrow.</span>
         </p>
 
         {/* Subtitle */}
@@ -90,14 +87,14 @@ export default function Hero() {
         >
           <button
             onClick={() => scrollTo('services')}
-            className="group inline-flex items-center gap-2 rounded-full bg-vortex-green px-7 py-3.5 text-sm font-semibold text-vortex-black transition-all duration-300 hover:shadow-glow hover:scale-105"
+            className="group inline-flex items-center gap-2 rounded-full bg-vortex-purple px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-glow hover:scale-105"
           >
             <Cpu className="w-4 h-4" />
             Explore Services
           </button>
           <button
             onClick={() => scrollTo('about')}
-            className="inline-flex items-center gap-2 rounded-full glass px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-vortex-green/40 hover:bg-white/10"
+            className="inline-flex items-center gap-2 rounded-full glass px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-vortex-purple/40 hover:bg-white/10"
           >
             About VORTEX
           </button>
@@ -107,7 +104,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <button
         onClick={() => scrollTo('about')}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-vortex-gray/60 hover:text-vortex-green transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-vortex-gray/60 hover:text-vortex-purple transition-colors"
         aria-label="Scroll to about"
       >
         <span className="text-[10px] font-mono tracking-[0.3em] uppercase">Scroll</span>

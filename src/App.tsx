@@ -11,8 +11,8 @@ import InstitutePage from '@/components/InstitutePage';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 function App() {
-  useScrollReveal();
   const [activePage, setActivePage] = useState<'home' | 'institute'>('home');
+  useScrollReveal(activePage);
 
   const showInstitute = () => {
     setActivePage('institute');

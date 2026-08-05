@@ -107,9 +107,7 @@ export default function InstitutePage({ onBack }: Props) {
         {/* Programs Grid Section */}
         <div id="programs" className="mb-20">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <p className="text-vortex-green font-mono text-xs tracking-[0.3em] uppercase mb-3">
-              // Curriculum Offered
-            </p>
+          
             <h2 className="font-display font-bold text-white text-3xl sm:text-5xl tracking-tight">
               All Learning <span className="text-vortex-green text-glow">Programs</span>
             </h2>

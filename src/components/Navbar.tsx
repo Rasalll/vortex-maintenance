@@ -47,12 +47,12 @@ export default function Navbar() {
                 key={link.id}
                 onClick={() => go(link.id)}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                  active === link.id ? 'text-vortex-green' : 'text-vortex-gray hover:text-white'
+                  active === link.id ? 'text-vortex-purple' : 'text-vortex-gray hover:text-white'
                 }`}
               >
                 {link.label}
                 {active === link.id && (
-                  <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-vortex-green shadow-glow-sm" />
+                  <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-vortex-purple shadow-glow-sm" />
                 )}
               </button>
             ))}
@@ -82,7 +82,7 @@ export default function Navbar() {
                 onClick={() => go(link.id)}
                 className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                   active === link.id
-                    ? 'text-vortex-green bg-vortex-green/10'
+                    ? 'text-vortex-purple bg-vortex-purple/10'
                     : 'text-vortex-gray hover:text-white hover:bg-white/5'
                 }`}
               >
