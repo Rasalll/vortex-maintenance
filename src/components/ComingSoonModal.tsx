@@ -24,14 +24,14 @@ export default function ComingSoonModal({ title, open, onClose }: Props) {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
       <div
-        className="absolute inset-0 bg-vortex-black/85 backdrop-blur-md animate-fade-in"
+        className="absolute inset-0 bg-slate-900/40 backdrop-blur-md animate-fade-in"
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-md rounded-3xl glass border border-vortex-purple/30 shadow-glow-lg animate-scale-in overflow-hidden z-10">
+      <div className="relative w-full max-w-md rounded-3xl bg-white/95 backdrop-blur-xl border border-vortex-purple/30 shadow-2xl animate-scale-in overflow-hidden z-10 text-slate-900">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full glass-light grid place-items-center text-vortex-gray hover:text-vortex-purple transition-colors"
+          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-slate-100 grid place-items-center text-slate-600 hover:text-vortex-purple hover:bg-slate-200 transition-colors"
           aria-label="Close"
         >
           <X className="w-4 h-4" />
@@ -42,12 +42,12 @@ export default function ComingSoonModal({ title, open, onClose }: Props) {
             <Clock className="w-8 h-8 text-vortex-purple" strokeWidth={1.5} />
           </div>
 
-          <div className="inline-flex items-center gap-2 text-vortex-purple font-mono text-[11px] tracking-[0.25em] uppercase mb-3 font-medium">
+          <div className="inline-flex items-center gap-2 text-vortex-purple font-mono text-[11px] tracking-[0.25em] uppercase mb-3 font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
             Upcoming Service
           </div>
 
-          <h3 className="font-display font-bold text-white text-2xl leading-tight">
+          <h3 className="font-display font-bold text-slate-900 text-2xl leading-tight">
             {title}
           </h3>
 
@@ -55,13 +55,13 @@ export default function ComingSoonModal({ title, open, onClose }: Props) {
             Upcoming
           </p>
 
-          <p className="mt-3 text-sm text-vortex-gray/70 leading-relaxed">
+          <p className="mt-3 text-sm text-slate-600 leading-relaxed">
             We are actively preparing this vertical. Stay tuned as we launch new AI-integrated features.
           </p>
 
           <button
             onClick={onClose}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-vortex-purple px-7 py-3 text-sm font-semibold text-vortex-black transition-all duration-300 hover:shadow-glow hover:scale-105"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-vortex-purple px-7 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-glow hover:scale-105"
           >
             Got it
           </button>

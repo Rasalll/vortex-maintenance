@@ -17,37 +17,43 @@
     overflow-x: hidden;
   }
   ::selection {
-    background: rgba(139, 92, 246, 0.35);
-    color: #fff;
+    background: rgba(124, 58, 237, 0.2);
+    color: #7C3AED;
   }
 }
 
 @layer components {
-  .glass {
-    background: rgba(21, 21, 21, 0.55);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
+ .glass {
+  background: rgba(255, 255, 255, 0.413);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  box-shadow:
+    0 8px 30px rgba(80, 50, 150, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
   .glass-light {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
   }
 
-  /* Site-wide gradient — purple theme */
+  /* Site-wide gradient — purple theme on light bg */
   .text-gradient {
-    background: linear-gradient(120deg, #fff 0%, #8B5CF6 50%, #C084FC 100%);
+    background: linear-gradient(120deg, #0F172A 0%, #7C3AED 50%, #9333EA 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* Institute-only gradient — keeps green */
+  /* Institute-only gradient — green theme on light bg */
   .text-gradient-green {
-    background: linear-gradient(120deg, #fff 0%, #76F500 50%, #fff 100%);
+    background: linear-gradient(120deg, #0F172A 0%, #16A34A 50%, #15803D 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
@@ -56,24 +62,24 @@
 
   /* Site-wide glow — purple */
   .text-glow {
-    text-shadow: 0 0 24px rgba(139, 92, 246, 0.55);
+    text-shadow: 0 0 24px rgba(124, 58, 237, 0.25);
   }
 
   /* Institute-only glow — green */
   .text-glow-green {
-    text-shadow: 0 0 24px rgba(118, 245, 0, 0.45);
+    text-shadow: 0 0 24px rgba(22, 163, 74, 0.25);
   }
 
-  /* Site-wide grid — purple tint */
+  /* Site-wide grid — light purple tint */
   .grid-bg {
     background-image:
-      linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
   .noise-bg {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
   }
 }
 
@@ -88,19 +94,19 @@
   transform: translateY(0);
 }
 
-/* Custom scrollbar — purple */
+/* Custom scrollbar — light mode */
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B0B0B;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.35);
+  background: rgba(124, 58, 237, 0.25);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.6);
+  background: rgba(124, 58, 237, 0.5);
 }
 
 @media (prefers-reduced-motion: reduce) {

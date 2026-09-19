@@ -5,17 +5,17 @@ export default {
     extend: {
       colors: {
         vortex: {
-          /* Primary site-wide theme — electric purple from brand brochure */
-          purple: '#8B5CF6',
-          'purple-glow': 'rgba(139,92,246,0.25)',
+          /* Primary site-wide theme — electric purple adapted for light mode */
+          purple: '#7C3AED',
+          'purple-glow': 'rgba(124,58,237,0.15)',
           /* Kept for InstitutePage (AI Institute) only */
-          green: '#76F500',
-          'green-glow': 'rgba(118,245,0,0.25)',
-          /* Neutrals */
-          black: '#0B0B0B',
-          charcoal: '#151515',
-          gray: '#EAEAEA',
-          white: '#FFFFFF',
+          green: '#16A34A',
+          'green-glow': 'rgba(22,163,74,0.15)',
+          /* Neutrals for Light Theme */
+          black: '#F8FAFC',
+          charcoal: '#FFFFFF',
+          gray: '#0F172A',
+          white: '#020617',
         },
       },
       fontFamily: {
@@ -81,14 +81,14 @@ export default {
         },
       },
       boxShadow: {
-        /* Purple glow — used site-wide */
-        'glow': '0 0 30px rgba(139,92,246,0.4)',
-        'glow-lg': '0 0 60px rgba(139,92,246,0.5)',
-        'glow-sm': '0 0 15px rgba(139,92,246,0.35)',
-        /* Green glow — kept for InstitutePage only */
-        'glow-green': '0 0 30px rgba(118,245,0,0.35)',
-        'glow-green-lg': '0 0 60px rgba(118,245,0,0.45)',
-        'glow-green-sm': '0 0 15px rgba(118,245,0,0.3)',
+        /* Purple glow — updated for light mode */
+        'glow': '0 10px 30px -5px rgba(124,58,237,0.25)',
+        'glow-lg': '0 20px 50px -10px rgba(124,58,237,0.3)',
+        'glow-sm': '0 4px 20px -2px rgba(124,58,237,0.2)',
+        /* Green glow — updated for light mode */
+        'glow-green': '0 10px 30px -5px rgba(22,163,74,0.25)',
+        'glow-green-lg': '0 20px 50px -10px rgba(22,163,74,0.3)',
+        'glow-green-sm': '0 4px 20px -2px rgba(22,163,74,0.2)',
       },
     },
   },

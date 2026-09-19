@@ -12,7 +12,7 @@ export default function Vision() {
           <div className="relative">
             
 
-            <h2 className="font-display font-bold text-white text-4xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight">
+            <h2 className="font-display font-bold text-slate-900 text-4xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight">
               Learn Today.
               <br />
               <span className="text-gradient animate-gradient-x text-glow">
@@ -20,12 +20,12 @@ export default function Vision() {
               </span>
             </h2>
 
-            <p className="mt-8 max-w-2xl mx-auto text-lg text-vortex-gray/80 leading-relaxed">
+            <p className="mt-8 max-w-2xl mx-auto text-lg text-slate-600 leading-relaxed">
               Empowering the next generation with AI-integrated skills and
               cutting-edge technologies to build a smarter future.
             </p>
 
-            <div className="mt-10 inline-flex items-center gap-2 text-vortex-purple/70 text-sm font-mono">
+            <div className="mt-10 inline-flex items-center gap-2 text-vortex-purple text-sm font-mono font-medium">
               <Sparkles className="w-4 h-4" />
               VORTEX Global Technologies
             </div>

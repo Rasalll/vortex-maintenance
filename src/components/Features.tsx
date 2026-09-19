@@ -42,12 +42,12 @@ export default function Features() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <p className="reveal text-vortex-purple font-mono text-xs tracking-[0.3em] uppercase mb-5">
-            // Why VORTEX
+            Why VORTEX
           </p>
-          <h2 className="reveal font-display font-bold text-white text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
+          <h2 className="reveal font-display font-bold text-slate-900 text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
             Learning <span className="text-vortex-purple text-glow">Features</span>
           </h2>
-          <p className="reveal mt-6 text-lg text-vortex-gray/70" data-reveal-delay="100">
+          <p className="reveal mt-6 text-lg text-slate-600" data-reveal-delay="100">
             What makes a VORTEX education different — built for the AI era, end to end.
           </p>
         </div>
@@ -58,11 +58,11 @@ export default function Features() {
             return (
               <div
                 key={f.title}
-                className="reveal group relative overflow-hidden rounded-3xl glass-light p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-vortex-purple/30 hover:bg-white/[0.06]"
+                className="reveal group relative overflow-hidden rounded-3xl glass-light p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-vortex-purple/30 hover:bg-white hover:shadow-xl"
                 data-reveal-delay={(i % 3) * 100}
               >
                 {/* number watermark */}
-                <span className="absolute -top-2 right-3 font-display font-bold text-7xl text-white/[0.03] select-none">
+                <span className="absolute -top-2 right-3 font-display font-bold text-7xl text-slate-900/[0.04] select-none">
                   {String(i + 1).padStart(2, '0')}
                 </span>
 
@@ -70,10 +70,10 @@ export default function Features() {
                   <div className="w-12 h-12 rounded-xl bg-vortex-purple/10 border border-vortex-purple/20 grid place-items-center transition-all duration-500 group-hover:bg-vortex-purple/20 group-hover:scale-110">
                     <Icon className="w-6 h-6 text-vortex-purple" strokeWidth={1.5} />
                   </div>
-                  <h3 className="mt-5 font-display font-semibold text-white text-lg">
+                  <h3 className="mt-5 font-display font-semibold text-slate-900 text-lg">
                     {f.title}
                   </h3>
-                  <p className="mt-2.5 text-sm text-vortex-gray/70 leading-relaxed">
+                  <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">
                     {f.description}
                   </p>
                 </div>
