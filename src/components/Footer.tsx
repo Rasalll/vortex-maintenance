@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Phone, MapPin, Globe, Instagram } from 'lucide-react';
 
-const CONTACT = [
+const  CONTACT = [
   { icon: Phone, label: 'Phone', value: '+91 8606 101 333', href: 'tel:+918606101333' },
   { icon: MapPin, label: 'Location', value: 'Nelliparambu, Manjeri – 676122', href: 'https://maps.google.com/?q=Nelliparambu+Manjeri+676122' },
   { icon: Globe, label: 'Website', value: 'vortexglobaltechnologies.in', href: 'https://vortexglobaltechnologies.in' },
@@ -113,9 +113,8 @@ export function RevealLinks() {
         {/* Flip Links */}
         <div className="grid place-content-center gap-4 text-center">
           <FlipLink href="https://instagram.com/vortex_t_hub" hoverColor="text-[#E1306C]">Instagram</FlipLink>
-          <FlipLink href="https://linkedin.com" hoverColor="text-[#0A66C2]">Linkedin</FlipLink>
+          <FlipLink href="https://www.linkedin.com/company/vortex-global-technologies" hoverColor="text-[#0A66C2]">Linkedin</FlipLink>
           <FlipLink href="https://facebook.com" hoverColor="text-[#1877F2]">Facebook</FlipLink>
-          <FlipLink href="https://vortexglobaltechnologies.in" hoverColor="text-vortex-purple">Website</FlipLink>
         </div>
       </div>
     </section>
