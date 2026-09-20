@@ -140,7 +140,7 @@ export default function Footer() {
             <div className="reveal md:col-span-1">
               <div className="flex items-center gap-3">
                 <img
-                  src="/src/public/logos/vortexx-logo-horizontal-blue-violet.png"
+                  src="/src/public/logos/webp/vortexx-logo-horizontal-blue-violet.webp"
                   alt="VORTEX Global Technologies"
                   className="h-10 sm:h-12 w-auto object-contain"
                 />

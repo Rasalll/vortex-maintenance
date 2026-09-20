@@ -45,7 +45,7 @@ export default function Navbar() {
           {/* Logo Brand */}
           <button onClick={() => go('home')} className="flex items-center text-left focus:outline-none group py-0.5">
             <img
-              src="/src/public/logos/vortexx-logo-horizontal-blue-violet.png"
+              src="/src/public/logos/webp/vortexx-logo-horizontal-blue-violet.webp"
               alt="VORTEX Global Technologies"
               className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />

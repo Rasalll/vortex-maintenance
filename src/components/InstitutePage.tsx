@@ -38,7 +38,7 @@ export default function InstitutePage({ onBack }: Props) {
             {/* Institute Logo Badge */}
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-2xl bg-vortex-green/10 border border-vortex-green/20 mb-6 shadow-glow-green-sm">
               <img
-                src="/src/public/logos/vortexx-logo-icon-blue-violet.png"
+                src="/src/public/logos/webp/vortexx-logo-icon-blue-violet.webp"
                 alt="VORTEX Academy Logo"
                 className="w-8 h-8 object-contain"
               />
