@@ -26,7 +26,7 @@ export const SERVICES: Service[] = [
     description:
       'A next-generation learning institute with AI-integrated curriculum across design, development, DevOps, marketing, and robotics.',
     available: true,
-    bgImage: '/src/public/logos/webp/ai-integrated-technology-institute.webp',
+    bgImage: '/logos/webp/ai-integrated-technology-institute.webp',
     features: [
       'AI Integrated Curriculum',
       'Hands-on Live Projects',
@@ -41,7 +41,7 @@ export const SERVICES: Service[] = [
     description:
       'Intelligent software, web, and mobile solutions powered by AI-driven development workflows.',
     available: false,
-    bgImage: '/src/public/logos/webp/ai-integrated-it-solutions.webp',
+    bgImage: '/logos/webp/ai-integrated-it-solutions.webp',
     features: [
       'Custom Software Architecture',
       'AI-Driven Workflows',
@@ -56,7 +56,7 @@ export const SERVICES: Service[] = [
     description:
       'A research lab exploring automation, embedded systems, IoT devices, and AI-driven robotics.',
     available: false,
-    bgImage: '/src/public/logos/webp/ai-iot-robotics-lab.webp',
+    bgImage: '/logos/webp/ai-iot-robotics-lab.webp',
     features: [
       'Smart Embedded Systems',
       'Sensor & Actuator Networks',
@@ -71,7 +71,7 @@ export const SERVICES: Service[] = [
     description:
       'AI-powered SEO, social, paid ads, analytics, branding, and content marketing that scales.',
     available: false,
-    bgImage: '/src/public/logos/webp/ai-era-digital-marketing.webp',
+    bgImage: '/logos/webp/ai-era-digital-marketing.webp',
     features: [
       'AI Audience Targeting',
       'Automated Ad Optimization',
@@ -86,7 +86,7 @@ export const SERVICES: Service[] = [
     description:
       'Smart automation products that reduce manual work and unlock operational efficiency.',
     available: false,
-    bgImage: '/src/public/logos/webp/ai-integrated-automation-products.webp',
+    bgImage: '/logos/webp/ai-integrated-automation-products.webp',
     features: [
       'Enterprise Task Automation',
       'Intelligent Document Extractors',
@@ -101,7 +101,7 @@ export const SERVICES: Service[] = [
     description:
       'Mentorship, infrastructure, and AI tooling to launch and scale future-ready startups.',
     available: false,
-    bgImage: '/src/public/logos/webp/startup-incubation.webp',
+    bgImage: '/logos/webp/startup-incubation.webp',
     features: [
       'AI Tooling Sandbox Access',
       'Pre-seed Pitch Mentorship',

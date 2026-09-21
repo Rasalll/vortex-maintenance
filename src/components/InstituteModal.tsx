@@ -37,7 +37,7 @@ export default function InstituteModal({ open, onClose }: Props) {
           <div className="flex items-center gap-3.5">
             <div className="w-12 h-12 rounded-2xl bg-vortex-green/10 border border-vortex-green/20 grid place-items-center shrink-0">
               <img
-                src="/src/public/logos/vortexx-logo-icon-blue-violet.png"
+                src="/logos/webp/vortexx-logo-icon-blue-violet.webp"
                 alt="VORTEX Academy Logo"
                 className="w-7 h-7 object-contain"
               />
