@@ -9,8 +9,8 @@ export default {
           purple: '#7C3AED',
           'purple-glow': 'rgba(124,58,237,0.15)',
           /* Kept for InstitutePage (AI Institute) only */
-          green: '#16A34A',
-          'green-glow': 'rgba(22,163,74,0.15)',
+          green: '#9ECB3B',
+          'green-glow': 'rgba(158,203,59,0.15)',
           /* Neutrals for Light Theme */
           black: '#F8FAFC',
           charcoal: '#FFFFFF',
@@ -86,9 +86,9 @@ export default {
         'glow-lg': '0 20px 50px -10px rgba(124,58,237,0.3)',
         'glow-sm': '0 4px 20px -2px rgba(124,58,237,0.2)',
         /* Green glow — updated for light mode */
-        'glow-green': '0 10px 30px -5px rgba(22,163,74,0.25)',
-        'glow-green-lg': '0 20px 50px -10px rgba(22,163,74,0.3)',
-        'glow-green-sm': '0 4px 20px -2px rgba(22,163,74,0.2)',
+        'glow-green': '0 10px 30px -5px rgba(158,203,59,0.25)',
+        'glow-green-lg': '0 20px 50px -10px rgba(158,203,59,0.3)',
+        'glow-green-sm': '0 4px 20px -2px rgba(158,203,59,0.2)',
       },
     },
   },

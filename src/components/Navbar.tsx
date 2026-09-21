@@ -25,7 +25,15 @@ export default function Navbar() {
 
   const go = (id: string) => {
     setOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (window.location.pathname === '/institute' || window.location.pathname === '/institute/') {
+      window.history.pushState({ page: 'home' }, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (

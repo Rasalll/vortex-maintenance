@@ -2,11 +2,17 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Phone, MapPin, Globe, Instagram } from 'lucide-react';
 
-const  CONTACT = [
+const CONTACT = [
   { icon: Phone, label: 'Phone', value: '+91 8606 101 333', href: 'tel:+918606101333' },
-  { icon: MapPin, label: 'Location', value: 'Nelliparambu, Manjeri – 676122', href: 'https://maps.google.com/?q=Nelliparambu+Manjeri+676122' },
+  { icon: MapPin, label: 'Headquarters', value: 'Nelliparambu, Manjeri – 676122', href: 'https://maps.google.com/?q=Nelliparambu+Manjeri+676122' },
   { icon: Globe, label: 'Website', value: 'vortexglobaltechnologies.in', href: 'https://vortexglobaltechnologies.in' },
   { icon: Instagram, label: 'Instagram', value: '@vortex_t_hub', href: 'https://instagram.com/vortex_t_hub' },
+];
+
+const LOCATIONS = [
+  { name: 'Manjeri (Primary HQ)', desc: 'Nelliparambu, Manjeri, Malappuram – 676122' },
+  { name: 'Infopark, Kochi', desc: 'Infopark Technology Campus, Kochi' },
+  { name: 'CAPKON, Calicut', desc: 'CAPKON Innovation Hub, Calicut' },
 ];
 
 const NAV = [
@@ -135,9 +141,9 @@ export default function Footer() {
 
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           {/* Main grid */}
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
             {/* Brand */}
-            <div className="reveal md:col-span-1">
+            <div className="reveal">
               <div className="flex items-center gap-3">
                 <img
                   src="/logos/webp/vortexx-logo-horizontal-blue-violet.webp"
@@ -145,7 +151,7 @@ export default function Footer() {
                   className="h-10 sm:h-12 w-auto object-contain"
                 />
               </div>
-              <p className="mt-5 text-sm text-slate-600 leading-relaxed max-w-xs">
+              <p className="mt-5 text-sm text-slate-600 leading-relaxed">
                 An AI-integrated technology company focused on education, software,
                 innovation, automation, startups, and future technologies.
               </p>
@@ -165,6 +171,24 @@ export default function Footer() {
                     >
                       {n.label}
                     </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Locations */}
+            <div className="reveal" data-reveal-delay="150">
+              <p className="text-vortex-purple font-mono text-[11px] tracking-[0.25em] uppercase mb-5 font-semibold">
+                Our Locations
+              </p>
+              <ul className="space-y-4">
+                {LOCATIONS.map((loc) => (
+                  <li key={loc.name} className="flex items-start gap-2.5">
+                    <MapPin className="w-4 h-4 text-vortex-purple shrink-0 mt-0.5" strokeWidth={1.5} />
+                    <div>
+                      <span className="block text-xs font-semibold text-slate-900">{loc.name}</span>
+                      <span className="block text-xs text-slate-500 mt-0.5 leading-relaxed">{loc.desc}</span>
+                    </div>
                   </li>
                 ))}
               </ul>

@@ -10,7 +10,7 @@ export default function Vision() {
           <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
 
           <div className="relative">
-            
+
 
             <h2 className="font-display font-bold text-slate-900 text-4xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight">
               Learn Today.
@@ -25,10 +25,7 @@ export default function Vision() {
               cutting-edge technologies to build a smarter future.
             </p>
 
-            <div className="mt-10 inline-flex items-center gap-2 text-vortex-purple text-sm font-mono font-medium">
-              <Sparkles className="w-4 h-4" />
-              VORTEX Global Technologies
-            </div>
+          
           </div>
         </div>
       </div>
