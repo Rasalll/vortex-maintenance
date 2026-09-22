@@ -185,9 +185,7 @@ export default function InstitutePage({ onBack }: Props) {
         <div className="rounded-[2.5rem] glass border border-slate-200 p-8 sm:p-14">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-vortex-green font-mono text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
-                // Methodology
-              </p>
+             
               <h2 className="font-display font-bold text-slate-900 text-3xl sm:text-4xl tracking-tight">
                 Why Study at <span className="text-vortex-green">VORTEX Institute?</span>
               </h2>

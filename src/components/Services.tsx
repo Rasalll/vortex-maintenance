@@ -29,7 +29,7 @@ export default function Services({ onOpenInstitute }: Props) {
         {/* ── 1. Section Header ── */}
         <div className="text-center mb-16">
           <p className="text-vortex-purple font-mono text-xs tracking-[0.3em] uppercase mb-4 font-semibold">
-            // What We Do
+            What We Do
           </p>
           <h2 className="font-display font-bold text-white text-4xl sm:text-6xl lg:text-7xl leading-tight tracking-tight">
             Main <span className="text-vortex-purple text-glow">Services</span>
