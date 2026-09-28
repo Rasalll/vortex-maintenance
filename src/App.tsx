@@ -8,6 +8,7 @@ import Vision from '@/components/Vision';
 import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
 import InstitutePage from '@/components/InstitutePage';
+import VortexChatbot from '@/components/chatbot/VortexChatbot';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 function getInitialRoute(): 'home' | 'institute' {
@@ -74,6 +75,7 @@ function App() {
         )}
       </main>
       <Footer />
+      <VortexChatbot />
     </div>
   );
 }
