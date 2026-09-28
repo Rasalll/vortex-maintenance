@@ -20,7 +20,7 @@ const NAV = [
   { id: 'about', label: 'About' },
   { id: 'services', label: 'Services' },
   { id: 'features', label: 'Why VORTEX' },
-  { id: 'vision', label: 'Vision' },
+  { id: 'enquiry', label: 'Enquiry' },
 ];
 
 const DURATION = 0.25;
