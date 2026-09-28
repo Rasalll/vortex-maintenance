@@ -46,7 +46,7 @@ VORTEX is headquartered in Manjeri, Malappuram, Kerala, with offices at Infopark
 VORTEX has six verticals engineered around AI:
 
 ## 1. AI Integrated Technology Institute
-A next-generation learning institute with AI-integrated curriculum across design, development, DevOps, marketing, and robotics.
+A next-generation learning institute with AI-integrated curriculum across design, development, DevOps, Digital Marketing, and IoT and Robotics.
 Key areas: AI Integrated Curriculum, Hands-on Live Projects, Direct Career Referral Support, Industry Expert Mentorship.
 
 ## 2. AI Integrated IT Solutions
@@ -121,7 +121,7 @@ A next-generation learning institute in Manjeri with an AI-integrated curriculum
 - Instagram: @vortex_t_hub
 
 ## Locations
-- Primary HQ: Nelliparambu, Manjeri, Malappuram – 676122
+- Primary HQ: Nelliparambu, Manjeri, Malappuram – 676123
 - Infopark, Kochi: Infopark Technology Campus, Kochi
 - CAPKON, Calicut: CAPKON Innovation Hub, Calicut
     `.trim(),

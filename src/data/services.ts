@@ -1,9 +1,9 @@
 import {
   GraduationCap,
   Code2,
-  Cpu,
-  Megaphone,
   Zap,
+  Megaphone,
+  Cpu,
   Rocket,
   type LucideIcon,
 } from 'lucide-react';
@@ -24,7 +24,7 @@ export const SERVICES: Service[] = [
     title: 'AI Integrated Technology Institute',
     icon: GraduationCap,
     description:
-      'A next-generation learning institute with AI-integrated curriculum across design, development, DevOps, marketing, and robotics.',
+      'A next-generation learning institute with AI-integrated curriculum across design, development, DevOps, Digital Marketing, and IoT and Robotics.',
     available: true,
     bgImage: '/logos/webp/ai-integrated-technology-institute.webp',
     features: [
@@ -40,7 +40,7 @@ export const SERVICES: Service[] = [
     icon: Code2,
     description:
       'Intelligent software, web, and mobile solutions powered by AI-driven development workflows.',
-    available: false,
+    available: true,
     bgImage: '/logos/webp/ai-integrated-it-solutions.webp',
     features: [
       'Custom Software Architecture',
@@ -50,18 +50,18 @@ export const SERVICES: Service[] = [
     ],
   },
   {
-    id: 'iot-robotics',
-    title: 'AI / IoT and Robotics Lab',
-    icon: Cpu,
+    id: 'automation',
+    title: 'AI Integrated Automation Products',
+    icon: Zap,
     description:
-      'A research lab exploring automation, embedded systems, IoT devices, and AI-driven robotics.',
-    available: false,
-    bgImage: '/logos/webp/ai-iot-robotics-lab.webp',
+      'Smart automation products that reduce manual work and unlock operational efficiency.',
+    available: true,
+    bgImage: '/logos/webp/ai-integrated-automation-products.webp',
     features: [
-      'Smart Embedded Systems',
-      'Sensor & Actuator Networks',
-      'Robotics Vision Programming',
-      'Hardware Prototyping',
+      'Enterprise Task Automation',
+      'Intelligent Document Extractors',
+      'Legacy System API Bridges',
+      'Operational Efficiency Dashboards',
     ],
   },
   {
@@ -80,18 +80,18 @@ export const SERVICES: Service[] = [
     ],
   },
   {
-    id: 'automation',
-    title: 'AI Integrated Automation Products',
-    icon: Zap,
+    id: 'iot-robotics',
+    title: 'AI / IoT and Robotics Lab',
+    icon: Cpu,
     description:
-      'Smart automation products that reduce manual work and unlock operational efficiency.',
+      'A research lab exploring automation, embedded systems, IoT devices, and AI-driven robotics.',
     available: false,
-    bgImage: '/logos/webp/ai-integrated-automation-products.webp',
+    bgImage: '/logos/webp/ai-iot-robotics-lab.webp',
     features: [
-      'Enterprise Task Automation',
-      'Intelligent Document Extractors',
-      'Legacy System API Bridges',
-      'Operational Efficiency Dashboards',
+      'Smart Embedded Systems',
+      'Sensor & Actuator Networks',
+      'Robotics Vision Programming',
+      'Hardware Prototyping',
     ],
   },
   {

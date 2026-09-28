@@ -9,14 +9,19 @@ import { ArrowUpRight, Check } from 'lucide-react';
 import ComingSoonModal from './ComingSoonModal';
 import { SERVICES, type Service } from '@/data/services';
 
-type Props = { onOpenInstitute: () => void };
+type Props = {
+  onOpenService: (serviceId: string) => void;
+};
 
-export default function Services({ onOpenInstitute }: Props) {
+export default function Services({ onOpenService }: Props) {
   const [soon, setSoon] = useState<Service | null>(null);
 
   const handleClick = (s: Service) => {
-    if (s.available) onOpenInstitute();
-    else setSoon(s);
+    if (s.available) {
+      onOpenService(s.id);
+    } else {
+      setSoon(s);
+    }
   };
 
   return (
@@ -51,7 +56,6 @@ export default function Services({ onOpenInstitute }: Props) {
           ))}
         </div>
       </div>
-
 
       {/* Coming Soon Modal */}
       <ComingSoonModal

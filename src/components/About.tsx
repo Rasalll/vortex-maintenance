@@ -205,7 +205,7 @@ export default function About() {
                       margin: "-80px",
                     }}
                     transition={{
-                      duration: 1.3,
+                      duration: 2.5,
                       ease: "easeInOut",
                       delay: 0.2,
                     }}

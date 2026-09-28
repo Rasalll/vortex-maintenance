@@ -118,7 +118,7 @@ export default function InstitutePage({ onBack }: Props) {
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed">
-              A next-generation learning institute in Manjeri with an AI-integrated curriculum spanning creative design, web &amp; mobile engineering, DevOps, marketing, and robotics.
+              A next-generation learning institute in Manjeri with an AI-integrated curriculum spanning creative design, web &amp; mobile engineering, DevOps, Digital Marketing, and IoT and Robotics.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
