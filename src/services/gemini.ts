@@ -1,11 +1,16 @@
 // Gemini API service for VORTEX AI Chatbot
-// API key is read from environment variable — never hardcoded.
+// Reads key from VITE_GEMINI_API_KEY or GEMINI_API_KEY env variables.
 
 import { retrieveRelevantKnowledge } from '@/data/vortexKnowledge';
 
-const GEMINI_API_KEY = import.meta.env.GEMINI_API_KEY as string | undefined;
+const GEMINI_API_KEY = (
+  import.meta.env.GEMINI_API_KEY ||
+  import.meta.env.VITE_GEMINI_API_KEY ||
+  (typeof process !== 'undefined' && process.env?.GEMINI_API_KEY)
+) as string | undefined;
 
-const GEMINI_TEXT_MODEL = 'gemini-3.1-flash-lite';
+// Valid Google Gemini API models in order of preference
+const GEMINI_MODELS = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
 
 const VORTEX_SYSTEM_PROMPT = `You are VORTEX AI, the intelligent assistant for VORTEX Global Technologies.
 
@@ -43,7 +48,7 @@ export interface ChatMessage {
   role: 'user' | 'model';
   content: string;
   timestamp: number;
-  type?: 'text' | 'voice'; // input mode that triggered this message
+  type?: 'text' | 'voice';
 }
 
 interface GeminiContent {
@@ -55,18 +60,16 @@ export async function sendMessage(
   userMessage: string,
   history: ChatMessage[]
 ): Promise<string> {
-  if (!GEMINI_API_KEY) {
-    throw new Error('GEMINI_API_KEY is not configured. Add GEMINI_API_KEY to your .env file.');
+  if (!GEMINI_API_KEY || GEMINI_API_KEY === 'your_gemini_api_key_here') {
+    throw new Error('Gemini API key is not configured. Please add GEMINI_API_KEY in Vercel or your .env file.');
   }
 
   // Retrieve relevant knowledge for this query
   const context = retrieveRelevantKnowledge(userMessage);
 
-  // Build conversation history for Gemini (exclude system turn)
+  // Build conversation history for Gemini
   const contents: GeminiContent[] = [];
 
-  // Add context as part of the first user message if history is empty,
-  // or inject it as a preceding user+model turn.
   const contextInjection: GeminiContent[] = [
     {
       role: 'user',
@@ -74,7 +77,7 @@ export async function sendMessage(
     },
     {
       role: 'model',
-      parts: [{ text: 'Got it. I\'ll use this VORTEX knowledge to answer accurately.' }],
+      parts: [{ text: "Got it. I'll use this VORTEX knowledge to answer accurately." }],
     },
   ];
 
@@ -94,38 +97,62 @@ export async function sendMessage(
     parts: [{ text: userMessage }],
   });
 
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_TEXT_MODEL}:generateContent`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-goog-api-key': GEMINI_API_KEY,
-      },
-      body: JSON.stringify({
-        system_instruction: {
-          parts: [{ text: VORTEX_SYSTEM_PROMPT }],
-        },
-        contents,
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 512,
-        },
-      }),
+  let lastError: Error | null = null;
+
+  // Try available models sequentially (fallback if one model fails)
+  for (const modelName of GEMINI_MODELS) {
+    try {
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': GEMINI_API_KEY,
+          },
+          body: JSON.stringify({
+            system_instruction: {
+              parts: [{ text: VORTEX_SYSTEM_PROMPT }],
+            },
+            contents,
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 512,
+            },
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const errText = await response.text();
+        let parsedMessage = errText;
+        try {
+          const parsed = JSON.parse(errText);
+          if (parsed?.error?.message) {
+            parsedMessage = parsed.error.message;
+          }
+        } catch {
+          // ignore json parse error
+        }
+        throw new Error(`Gemini API error (${response.status}): ${parsedMessage}`);
+      }
+
+      const data = await response.json();
+      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+      if (text) {
+        return text;
+      }
+    } catch (err) {
+      lastError = err as Error;
+      // If error is 404 (model not found), loop will try next fallback model
+      if (lastError.message.includes('404')) {
+        continue;
+      }
+      // For auth errors or other errors, break and throw immediately
+      throw lastError;
     }
-  );
-
-  if (!response.ok) {
-    const err = await response.text();
-    throw new Error(`Gemini API error ${response.status}: ${err}`);
   }
 
-  const data = await response.json();
-  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-  if (!text) {
-    throw new Error('No response from Gemini.');
-  }
-
-  return text;
+  throw lastError || new Error('No response received from Gemini API.');
 }

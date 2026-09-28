@@ -150,11 +150,13 @@ const ChatWindow: React.FC<Props> = ({ onClose }) => {
       addMessage('model', reply, 'text');
     } catch (err) {
       const e = err as Error;
-      setError(
-        e.message.includes('Failed to fetch') || e.message.includes('NetworkError')
-          ? 'Connection lost. Please check your internet and try again.'
-          : 'Something went wrong. Please try again.',
-      );
+      if (e.message.includes('not configured')) {
+        setError('Gemini API key is not configured. Please add VITE_GEMINI_API_KEY to your .env file.');
+      } else if (e.message.includes('Failed to fetch') || e.message.includes('NetworkError')) {
+        setError('Connection lost. Please check your internet connection and try again.');
+      } else {
+        setError(e.message || 'Something went wrong. Please try again.');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -175,11 +177,13 @@ const ChatWindow: React.FC<Props> = ({ onClose }) => {
       setVoiceState('idle');
     } catch (err) {
       const e = err as Error;
-      setVoiceError(
-        e.message.includes('Failed to fetch') || e.message.includes('NetworkError')
-          ? 'Connection lost. Please check your internet and try again.'
-          : 'Something went wrong. Please try again.',
-      );
+      if (e.message.includes('not configured')) {
+        setVoiceError('Gemini API key is not configured. Please add VITE_GEMINI_API_KEY to your .env file.');
+      } else if (e.message.includes('Failed to fetch') || e.message.includes('NetworkError')) {
+        setVoiceError('Connection lost. Please check your internet connection and try again.');
+      } else {
+        setVoiceError(e.message || 'Something went wrong. Please try again.');
+      }
       setVoiceState('idle');
     }
   }, [messages, addMessage]);

@@ -15,10 +15,14 @@
 
 import { retrieveRelevantKnowledge } from '@/data/vortexKnowledge';
 
-const GEMINI_API_KEY = import.meta.env.GEMINI_API_KEY as string | undefined;
+const GEMINI_API_KEY = (
+  import.meta.env.GEMINI_API_KEY ||
+  import.meta.env.VITE_GEMINI_API_KEY ||
+  (typeof process !== 'undefined' && process.env?.GEMINI_API_KEY)
+) as string | undefined;
 
 // Gemini Live model — supports Malayalam, English, voice output
-const LIVE_MODEL = 'gemini-3.5-flash-live';
+const LIVE_MODEL = 'gemini-2.0-flash-exp';
 
 // Voice personality: Aoede is warm and conversational; Puck is energetic.
 // Aoede works best for Malayalam/multilingual.

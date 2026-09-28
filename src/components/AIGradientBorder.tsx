@@ -5,7 +5,9 @@ import {
   useMotionTemplate,
   animate,
 } from 'motion/react';
-import { twMerge } from 'tailwind-merge';
+function cn(...classes: (string | undefined)[]): string {
+  return classes.filter(Boolean).join(' ');
+}
 
 // VORTEX brand gradient — vivid purple/violet/indigo cycle
 const STOPS = [
@@ -47,7 +49,7 @@ export default function AIGradientBorder({
   }, [angle, duration]);
 
   return (
-    <div className={twMerge('relative', containerClassName)}>
+    <div className={cn('relative', containerClassName)}>
 
       {/* ── Outer glow bloom — large, soft, very visible ── */}
       <motion.div
@@ -72,7 +74,7 @@ export default function AIGradientBorder({
 
       {/* ── Inner card — sits on top, inset reveals the border ring ── */}
       <div
-        className={twMerge(
+        className={cn(
           'relative m-[3px] rounded-[calc(1rem-3px)] sm:rounded-[calc(1.5rem-3px)] bg-white/98 backdrop-blur-sm',
           className
         )}
