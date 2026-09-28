@@ -3,7 +3,7 @@
 
 import { retrieveRelevantKnowledge } from '@/data/vortexKnowledge';
 
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
+const GEMINI_API_KEY = import.meta.env.GEMINI_API_KEY as string | undefined;
 
 const GEMINI_TEXT_MODEL = 'gemini-3.1-flash-lite';
 
@@ -56,7 +56,7 @@ export async function sendMessage(
   history: ChatMessage[]
 ): Promise<string> {
   if (!GEMINI_API_KEY) {
-    throw new Error('GEMINI_API_KEY is not configured. Add VITE_GEMINI_API_KEY to your .env file.');
+    throw new Error('GEMINI_API_KEY is not configured. Add GEMINI_API_KEY to your .env file.');
   }
 
   // Retrieve relevant knowledge for this query

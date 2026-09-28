@@ -15,7 +15,7 @@
 
 import { retrieveRelevantKnowledge } from '@/data/vortexKnowledge';
 
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
+const GEMINI_API_KEY = import.meta.env.GEMINI_API_KEY as string | undefined;
 
 // Gemini Live model — supports Malayalam, English, voice output
 const LIVE_MODEL = 'gemini-3.5-flash-live';
@@ -142,7 +142,7 @@ export class VoiceSession {
   /** Start a new voice session */
   async start(conversationContext: string, currentQuery = ''): Promise<void> {
     if (!GEMINI_API_KEY) {
-      this.callbacks.onError('Gemini API key is not configured. Add VITE_GEMINI_API_KEY to your .env file.');
+      this.callbacks.onError('Gemini API key is not configured. Add GEMINI_API_KEY to your .env file.');
       return;
     }
 
