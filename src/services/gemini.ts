@@ -1,7 +1,7 @@
 // Gemini API service for VORTEX AI Chatbot
 // Reads key from VITE_GEMINI_API_KEY or GEMINI_API_KEY env variables.
 
-import { retrieveRelevantKnowledge } from '@/data/vortexKnowledge';
+import { retrieveRelevantKnowledge } from '@/data/markdownKnowledge';
 
 const GEMINI_API_KEY = (
   import.meta.env.GEMINI_API_KEY ||
@@ -9,8 +9,15 @@ const GEMINI_API_KEY = (
   (typeof process !== 'undefined' && process.env?.GEMINI_API_KEY)
 ) as string | undefined;
 
-// Valid Google Gemini API models in order of preference
-const GEMINI_MODELS = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+// Text-generation models available to this API key, in fallback order.
+const GEMINI_MODELS = ['gemini-3.1-flash-lite', 'gemini-3.5-flash'];
+const FALLBACK_STATUS_CODES = new Set([404, 408, 429, 500, 502, 503, 504]);
+
+function shouldTryNextModel(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error);
+  const status = message.match(/Gemini API error \((\d{3})\)/)?.[1];
+  return status ? FALLBACK_STATUS_CODES.has(Number(status)) : false;
+}
 
 const VORTEX_SYSTEM_PROMPT = `You are VORTEX AI, the intelligent assistant for VORTEX Global Technologies.
 
@@ -24,16 +31,28 @@ PERSONALITY:
 - Keep answers concise and helpful. Don't pad responses.
 - Do not start every reply with "Hey" or repeat greetings.
 
+RESPONSE STYLE & LENGTH:
+- Answer the user's actual question directly, using the minimum information needed to be clear and accurate.
+- Keep simple or specific answers brief and conversational; do not automatically provide everything related from the knowledge base.
+- Give more detail when the user asks for an explanation, comparison, list, or process.
+- VORTEX has six main service verticals in the Main Services knowledge. For a general or brief question about its main services, list all six names with at most one short description each; do not stop after the first two. Expand with the relevant detail only when asked.
+- Keep main service verticals distinct from the products VORTEX can build. For product questions, use the Products We Build knowledge section and name its listed products instead of replying with generic software capabilities.
+- Ask a short clarification if the question is ambiguous.
+- Include services, contact details, social links, company history, or other extra information only when relevant to the question.
+- Treat the knowledge base as a source of facts, not as a response template. Select only the facts needed to answer.
+- Do not pad replies with unrelated information or automatically append contact information.
+
 LANGUAGE BEHAVIOR:
-- If the user writes in English → respond in English.
-- If the user writes in Malayalam → respond in Malayalam.
-- If the user writes in Manglish (Malayalam in Latin script) → respond naturally in Manglish.
-- For mixed input, follow the dominant language or context.
-- The user can explicitly request another language at any time.
+- Detect the language and script of every user message before responding.
+- English input → respond entirely in English.
+- Malayalam written in Malayalam script → respond in Malayalam script.
+- Malayalam written with English/Roman letters (Manglish) → understand the meaning, then respond naturally in Malayalam script. Never reply in Manglish.
+- Mixed Malayalam and English → respond primarily in Malayalam script, retaining technical terms such as AI, CRM, ERP, automation, and software in English when appropriate.
+- If the user explicitly requests another language, follow that request.
 
 KNOWLEDGE RULES:
 - Answer ONLY from the VORTEX knowledge provided below.
-- If the information is not in the knowledge, clearly say you don't have that information right now, and suggest the user contact VORTEX directly at +91 8606 101 333.
+- If the information is not in the knowledge, clearly say you don't have it right now. Offer contact details only when they are relevant to the user's question.
 - NEVER invent or assume company facts, services, or details not provided.
 
 HALLUCINATION PREVENTION:
@@ -41,7 +60,7 @@ HALLUCINATION PREVENTION:
 - When uncertain, say so clearly and offer to help in another way.
 
 CONTACT REDIRECT:
-- For enquiries, pricing, or admissions, direct users to: +91 8606 101 333 or @vortex_t_hub on Instagram.`;
+- If asked about enquiries, pricing, or admissions, provide the relevant contact option: +91 8606 101 333 or @vortex_t_hub on Instagram. Do not append it to unrelated answers.`;
 
 export interface ChatMessage {
   id: string;
@@ -65,23 +84,10 @@ export async function sendMessage(
   }
 
   // Retrieve relevant knowledge for this query
-  const context = retrieveRelevantKnowledge(userMessage);
+  const context = retrieveRelevantKnowledge(userMessage, history);
 
   // Build conversation history for Gemini
   const contents: GeminiContent[] = [];
-
-  const contextInjection: GeminiContent[] = [
-    {
-      role: 'user',
-      parts: [{ text: `Here is the relevant VORTEX knowledge for this conversation:\n\n${context}` }],
-    },
-    {
-      role: 'model',
-      parts: [{ text: "Got it. I'll use this VORTEX knowledge to answer accurately." }],
-    },
-  ];
-
-  contents.push(...contextInjection);
 
   // Add prior conversation history
   for (const msg of history) {
@@ -112,12 +118,14 @@ export async function sendMessage(
           },
           body: JSON.stringify({
             system_instruction: {
-              parts: [{ text: VORTEX_SYSTEM_PROMPT }],
+              parts: [{
+                text: `${VORTEX_SYSTEM_PROMPT}\n\nRELEVANT VORTEX KNOWLEDGE FROM THE MARKDOWN SOURCE:\n${context || 'No relevant information was found in the VORTEX knowledge files.'}`,
+              }],
             },
             contents,
             generationConfig: {
               temperature: 0.7,
-              maxOutputTokens: 512,
+              maxOutputTokens: 768,
             },
           }),
         }
@@ -145,11 +153,11 @@ export async function sendMessage(
       }
     } catch (err) {
       lastError = err as Error;
-      // If error is 404 (model not found), loop will try next fallback model
-      if (lastError.message.includes('404')) {
+      // Try the next model for unavailable, rate-limited, overloaded, or transient server errors.
+      if (shouldTryNextModel(lastError)) {
         continue;
       }
-      // For auth errors or other errors, break and throw immediately
+      // Authentication, request, and other non-transient errors should fail immediately.
       throw lastError;
     }
   }

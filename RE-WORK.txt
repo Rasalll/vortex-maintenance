@@ -1,0 +1,35 @@
+Website rework:
+
+AI Integrated Technology Institute:
+1. Change the navbar color theme to green when the user clicks on "AI Integrated Technology Institute".
+2. Change the description from "Marketing" to "Digital Marketing", and from "Robotics" to "IoT and Robotics".
+
+Main Services (rearrange in this order):
+1. AI Integrated Technology Institute
+2. AI Integrated IT Solutions
+3. AI Integrated Automation Products
+4. AI Era of Digital Marketing
+5. AI / IoT and Robotics Lab
+6. Startup Incubation
+
+Open Services (the others stay at the "Notify Me" stage because they are not open yet):
+1. AI Integrated IT Solutions
+2. AI Integrated Automation Products
+
+In the Automation Products section, add these:
+- Services
+- Products
+- Why Vortex
+
+When a user clicks on a service that has not opened yet:
+- Show "Details Soon"
+- Add a "Call Direct" button
+- Add a "WhatsApp Chat" button
+
+CTA message:
+Use this message: "Hi VORTEX, I want to know more about you"
+
+Other changes:
+- Change the pincode from 676122 to 676123.
+- Change "Capkon Innovation Hub, Calicut" to "Capkon City Business Centre".
+
