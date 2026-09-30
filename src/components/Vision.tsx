@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Phone } from 'lucide-react';
+import { MessageCircle, Phone } from 'lucide-react';
 import RotatingText from './RotatingText';
 import AIGradientBorder from './AIGradientBorder';
 
 const PRESET_MESSAGE = "Hi VORTEX, I'd like to know more about your learning programs.";
+const WHATSAPP_NUMBER = '918606101333';
 
 export default function Vision() {
   const [formData, setFormData] = useState({
     fullName: '',
     message: PRESET_MESSAGE,
   });
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(formData.message)}`;
 
   return (
     <section id="enquiry" className="relative py-24 sm:py-32 bg-vortex-black overflow-hidden scroll-mt-20">
@@ -79,14 +81,26 @@ export default function Vision() {
                   />
                 </div>
 
-                {/* CTA — calls the number directly */}
-                <div className="pt-2">
+                {/* Contact actions */}
+                <div className="grid gap-3 pt-2">
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-2.5 px-7 py-4 text-sm sm:text-base font-semibold bg-[#25D366] text-white transition-all shadow-[3px_3px_0px_#000] hover:bg-[#1FBA59] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+                  >
+                    <MessageCircle className="w-4 h-4 text-white" />
+                    <span>Chat with us on WhatsApp</span>
+                  </a>
                   <a
                     href="tel:+918606101333"
-                    className="inline-flex w-full items-center justify-center gap-2.5 px-7 py-4 text-sm sm:text-base font-semibold bg-white text-slate-900 transition-all shadow-[3px_3px_0px_#000] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+                    className="inline-flex w-full items-center justify-center gap-2.5 px-7 py-3.5 text-sm sm:text-base font-semibold bg-vortex-purple text-white transition-all shadow-[3px_3px_0px_#000] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
                   >
                     <Phone className="w-4 h-4" />
-                    <span>Call to Enquire</span>
+                    <span className="flex flex-col items-start leading-tight">
+                      <span>Call Direct</span>
+                      <span className="mt-1 text-xs font-medium text-white/85">+91 8606 101 333</span>
+                    </span>
                   </a>
                 </div>
               </div>
