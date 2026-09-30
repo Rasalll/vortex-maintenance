@@ -194,7 +194,7 @@ export default function About() {
                       C 82 93, 29 83, 20 65
                       C 11 48, 29 29, 63 21
                     "
-                    stroke="#FACC15"
+                    stroke="#ff0000ff"
                     strokeWidth="3.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
