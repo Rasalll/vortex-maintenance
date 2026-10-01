@@ -2,17 +2,16 @@ import React from 'react';
 
 interface Props {
   isOpen: boolean;
-  hasUnread: boolean;
   onClick: () => void;
 }
 
-const ChatButton: React.FC<Props> = ({ isOpen, hasUnread, onClick }) => {
+const ChatButton: React.FC<Props> = ({ isOpen, onClick }) => {
   return (
     <button
       id="vortex-chat-button"
       className={`vx-chat-fab ${isOpen ? 'vx-chat-fab--open' : ''}`}
       onClick={onClick}
-      aria-label={isOpen ? 'Close VORTEX AI chat' : 'Open VORTEX AI chat'}
+      aria-label={isOpen ? 'Close VOXI Chat' : 'Open VOXI Chat'}
       aria-expanded={isOpen}
       aria-haspopup="dialog"
       type="button"
@@ -30,14 +29,10 @@ const ChatButton: React.FC<Props> = ({ isOpen, hasUnread, onClick }) => {
         <>
           <img
             src="/chatbot-icon.png"
-            alt="VORTEX AI"
+            alt="VOXI Chat"
             className="vx-fab-img"
             draggable={false}
           />
-          {/* Unread badge */}
-          {hasUnread && (
-            <span className="vx-chat-fab-badge" aria-label="New message" />
-          )}
         </>
       )}
     </button>

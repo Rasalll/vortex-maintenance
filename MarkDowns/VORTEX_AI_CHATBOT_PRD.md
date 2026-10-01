@@ -619,8 +619,11 @@ src/
 ├── services/
 │   └── gemini.js
 │
-└── data/
-    └── vortexKnowledge.js
+├── data/
+│   └── markdownKnowledge.ts
+└── MarkDowns/
+    └── VORTEX_KNOWLEDGE/
+        └── *.md
 ```
 
 `VortexChatbot` should be mounted at the application/root level so the floating assistant is available across the entire website without needing to add it separately to every page section.

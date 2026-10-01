@@ -11,6 +11,7 @@ import ScrollProgress from '@/components/ScrollProgress';
 import InstitutePage from '@/components/InstitutePage';
 import ITSolutionsPage from '@/components/ITSolutionsPage';
 import AutomationProductsPage from '@/components/AutomationProductsPage';
+import VortexChatbot from '@/components/chatbot/VortexChatbot';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export type ActivePage = 'home' | 'institute' | 'it-solutions' | 'automation';
@@ -104,6 +105,7 @@ function App() {
       </main>
       <Footer />
       <Analytics />
+      <VortexChatbot />
     </div>
   );
 }

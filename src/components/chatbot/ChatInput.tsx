@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import type { VoiceState } from './ChatWindow';
+import type { VoiceState } from '@/services/geminiLive';
 
 interface Props {
   onSend: (message: string) => void;
@@ -52,6 +52,8 @@ const ChatInput: React.FC<Props> = ({
     ? 'Stop listening'
     : isSpeaking
     ? 'Stop speaking'
+    : voiceState === 'connecting'
+    ? 'Cancel voice connection'
     : micBusy
     ? 'Please wait…'
     : 'Start voice input';
@@ -97,7 +99,7 @@ const ChatInput: React.FC<Props> = ({
         ].join(' ')}
         onClick={onVoiceStart}
         aria-label={micLabel}
-        aria-pressed={isListening || isSpeaking}
+        aria-pressed={voiceState === 'connecting' || isListening || isSpeaking}
         type="button"
         disabled={disabled || micBusy}
         title={micLabel}
@@ -111,9 +113,9 @@ const ChatInput: React.FC<Props> = ({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder={isListening ? 'Listening…' : isSpeaking ? 'VORTEX is speaking…' : 'Type your message…'}
+        placeholder={isListening ? 'Listening…' : isSpeaking ? 'VOXI Chat is speaking…' : 'Type your message…'}
         rows={1}
-        disabled={isLoading || disabled || isListening || isSpeaking}
+        disabled={isLoading || disabled || voiceState === 'connecting' || isListening || isSpeaking || voiceState === 'processing'}
         aria-label="Type your message"
         aria-multiline="true"
       />
@@ -121,7 +123,7 @@ const ChatInput: React.FC<Props> = ({
       <button
         className={`vx-send-btn ${value.trim() && !isLoading ? 'vx-send-btn--active' : ''}`}
         onClick={handleSend}
-        disabled={!value.trim() || isLoading || disabled || isListening || isSpeaking}
+        disabled={!value.trim() || isLoading || disabled || voiceState === 'connecting' || isListening || isSpeaking || voiceState === 'processing'}
         aria-label="Send message"
         type="button"
       >
