@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -13,6 +13,8 @@ import ITSolutionsPage from '@/components/ITSolutionsPage';
 import AutomationProductsPage from '@/components/AutomationProductsPage';
 import VortexChatbot from '@/components/chatbot/VortexChatbot';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+
+const AdminDashboard = lazy(() => import('@/components/AdminDashboard'));
 
 export type ActivePage = 'home' | 'institute' | 'it-solutions' | 'automation';
 
@@ -35,18 +37,22 @@ function getInitialRoute(): ActivePage {
 
 function App() {
   const [activePage, setActivePage] = useState<ActivePage>(getInitialRoute);
+  const [isAdminRoute, setIsAdminRoute] = useState(() => typeof window !== 'undefined' && window.location.pathname.toLowerCase().startsWith('/admin'));
   useScrollReveal(activePage);
 
   useEffect(() => {
     const handlePopState = () => {
       setActivePage(getInitialRoute());
+      setIsAdminRoute(window.location.pathname.toLowerCase().startsWith('/admin'));
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   useEffect(() => {
-    if (activePage === 'institute') {
+    if (isAdminRoute) {
+      document.title = 'VORTEX CMS | Admin';
+    } else if (activePage === 'institute') {
       document.title = 'AI Integrated Technology Institute | VORTEX Academy';
     } else if (activePage === 'it-solutions') {
       document.title = 'AI Integrated IT Solutions | VORTEX Enterprise Solutions';
@@ -55,7 +61,9 @@ function App() {
     } else {
       document.title = 'VORTEX Global Technologies | AI & Software Company in Manjeri, Malappuram';
     }
-  }, [activePage]);
+  }, [activePage, isAdminRoute]);
+
+  if (isAdminRoute) return <Suspense fallback={<div className="grid min-h-screen place-items-center bg-slate-50 text-sm text-slate-600">Loading CMS…</div>}><AdminDashboard /></Suspense>;
 
   const showPage = (page: ActivePage) => {
     let path = '/';
@@ -88,7 +96,7 @@ function App() {
   return (
     <div className="relative min-h-screen bg-vortex-black text-vortex-gray overflow-x-hidden">
       <ScrollProgress />
-      <Navbar activePage={activePage} onNavigateHome={showHome} onNavigateServices={showServices} />
+      <Navbar activePage={activePage} onNavigateHome={showHome} />
       <main>
         {activePage === 'home' && (
           <>

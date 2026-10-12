@@ -410,7 +410,8 @@
     --stack-dur: 320ms;
     position: relative;
     isolation: isolate;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
 
   .card-purple-stack::before,
@@ -418,7 +419,8 @@
   .card-purple-stack-layer {
     position: absolute;
     inset: 0;
-    border-radius: 0;
+    border-radius: 24px;
+    border: 2px solid rgba(148, 163, 184, 0.38);
     pointer-events: none;
     transition: transform var(--stack-dur) var(--stack-ease),
       box-shadow var(--stack-dur) var(--stack-ease),
@@ -428,32 +430,35 @@
   .card-purple-stack::after {
     content: '';
     z-index: 0;
-    background: rgba(124, 58, 237, 0.28);
+    background: #E2E5EA;
+    box-shadow: 0 16px 28px -18px rgba(15, 23, 42, 0.22);
     transform: translate3d(8px, 10px, 0) rotate(1.5deg);
   }
 
   .card-purple-stack::before {
     content: '';
     z-index: 1;
-    background: rgba(124, 58, 237, 0.5);
+    background: #ECEEF2;
+    box-shadow: 0 14px 24px -18px rgba(15, 23, 42, 0.18);
     transform: translate3d(4px, 5px, 0) rotate(0.7deg);
   }
 
   .card-purple-stack-layer {
     z-index: 1;
-    background: rgba(124, 58, 237, 0.16);
+    background: #F5F5F5;
+    box-shadow: 0 12px 20px -16px rgba(15, 23, 42, 0.15);
     transform: translate3d(12px, 15px, 0) rotate(2.2deg);
   }
 
   .card-purple {
     position: relative;
     z-index: 2;
-    border-radius: 0;
-    background: linear-gradient(125deg, rgba(124, 58, 237, 0.72) 0%, rgba(109, 40, 217, 0.72) 100%);
-    border: 0;
+    border-radius: 24px;
+    background: #FFFFFF;
+    border: 2px solid #102445;
     box-shadow:
-      0 12px 28px -16px rgba(76, 29, 149, 0.48),
-      0 0 34px -20px rgba(168, 85, 247, 0.45);
+      0 12px 24px -18px rgba(15, 23, 42, 0.2),
+      0 2px 5px rgba(15, 23, 42, 0.06);
     transition: transform var(--stack-dur) var(--stack-ease),
       box-shadow var(--stack-dur) var(--stack-ease);
   }
@@ -463,8 +468,8 @@
     .card-purple-stack:focus-within .card-purple {
       transform: translate3d(-2px, -8px, 0) rotate(-1.2deg);
       box-shadow:
-        0 16px 32px -16px rgba(76, 29, 149, 0.5),
-        0 0 38px -18px rgba(168, 85, 247, 0.5);
+        0 18px 30px -18px rgba(15, 23, 42, 0.26),
+        0 3px 8px rgba(15, 23, 42, 0.08);
     }
 
     .card-purple-stack:hover::before,

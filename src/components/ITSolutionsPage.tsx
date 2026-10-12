@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
-import { ArrowLeft, Code2, Cpu, Globe, Server, Layers, Phone, MessageCircle } from 'lucide-react';
+import { ArrowLeft, MessageCircle } from 'lucide-react';
 import SpecularButton from './SpecularButton';
+import ITSolutionsCmsSections from './ITSolutionsCmsSections';
+import { FlowButton } from './ui/flow-button';
+import FourTileBackground from './ui/FourTileBackground';
 
 interface ITSolutionsPageProps {
   onBack: () => void;
@@ -15,15 +18,15 @@ export default function ITSolutionsPage({ onBack }: ITSolutionsPageProps) {
   const whatsappUrl = `https://wa.me/918606101333?text=${whatsappMessage}`;
 
   return (
-    <div className="relative min-h-screen bg-slate-50 text-slate-900 pt-44 pb-20 overflow-hidden">
+    <div className="relative min-h-screen bg-slate-50 text-slate-900 pt-32 pb-20 overflow-hidden">
       {/* Background radial glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-vortex-purple/8 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute inset-0 grid-bg opacity-5 pointer-events-none" />
+      <FourTileBackground image="/grid-black-scaled-e1765885682958.webp" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-8 relative z-10">
         {/* Hero Section */}
-        <div className="relative mb-16 grid items-center gap-10 py-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] sm:py-12">
-          <div className="max-w-3xl text-left">
+        <div className="relative mb-16 grid items-start gap-10 py-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] sm:py-8">
+          <div className="relative z-10 max-w-3xl text-left">
             <h1 className="font-display font-bold text-slate-900 text-4xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight">
               AI Integrated <br />
               <span className="text-vortex-purple text-glow">IT Solutions</span>
@@ -34,30 +37,20 @@ export default function ITSolutionsPage({ onBack }: ITSolutionsPageProps) {
             </p>
 
             <div className="mt-8 flex flex-wrap justify-start gap-4">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-vortex-purple px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-glow hover:scale-105"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Discuss Your Project
-              </a>
-              <a
-                href="tel:+918606101333"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition-all duration-300 hover:border-vortex-purple/50 hover:bg-slate-50"
-              >
-                <Phone className="w-4 h-4 text-vortex-purple" />
-                Call Direct
-              </a>
+              <FlowButton text="Discuss Your Project" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                <span className="inline-flex items-center gap-2"><MessageCircle className="h-4 w-4" />Discuss Your Project</span>
+              </FlowButton>
+              <FlowButton text="Back to Services" onClick={onBack}>
+                <span className="inline-flex items-center gap-2"><ArrowLeft className="h-4 w-4" />Back to Services</span>
+              </FlowButton>
             </div>
           </div>
 
-          <div className="relative flex items-center justify-center lg:justify-end">
+          <div className="relative z-10 flex items-center justify-center lg:justify-end lg:self-center">
             <img
               src="/logos/webp/vortex-v-purple.png"
               alt="VORTEX Global Technologies icon"
-              className="h-auto w-[min(90vw,42rem)] max-w-none object-contain"
+              className="h-auto w-[min(90vw,42rem)] max-w-none object-contain brightness-110"
             />
           </div>
         </div>
@@ -78,38 +71,28 @@ export default function ITSolutionsPage({ onBack }: ITSolutionsPageProps) {
             {[
               {
                 title: 'Custom Software Architecture',
-                desc: 'Scalable, secure backend architectures built to handle enterprise workload demands.',
+                image: '/technology-pillars-images/Scalable%20Software%20Architecture%20Banner.png',
               },
               {
                 title: 'AI-Driven Workflows',
-                desc: 'Integrating Machine Learning models and AI capabilities directly into web & mobile systems.',
+                image: '/technology-pillars-images/AI-Driven%20Workflow%20Workspace.png',
               },
               {
                 title: 'Web & Mobile App Delivery',
-                desc: 'Responsive, lightning-fast cross-platform applications with seamless UX design.',
-              },
-              {
-                title: 'Optimized Cloud DevOps',
-                desc: 'Automated CI/CD pipelines, containerized deployments, and cloud monitoring.',
+                image: '/technology-pillars-images/Web-Mobile-App-Delivery-Showcase.png',
               },
             ].map((p) => (
               <div key={p.title} className="card-purple-stack group">
                 <span className="card-purple-stack-layer" aria-hidden="true" />
-                <article className="card-purple flex h-full flex-col justify-between p-8 relative overflow-hidden">
-                  <div className="relative z-10 pt-2">
-                    <h3 className="font-helvetica font-bold text-white text-xl leading-snug transition-colors duration-300 group-hover:text-violet-300">
-                      {p.title}
-                    </h3>
-                    <p className="mt-3 text-sm text-white leading-relaxed">
-                      {p.desc}
-                    </p>
-                  </div>
-
+                <article className="card-purple h-full overflow-hidden">
+                  <img src={p.image} alt={p.title} className="h-full w-full object-cover object-left" />
                 </article>
               </div>
             ))}
           </div>
         </div>
+
+        <ITSolutionsCmsSections />
 
         {/* CTA Footer Card */}
         <div className="rounded-3xl border border-slate-200 bg-white p-8 sm:p-12 text-center relative overflow-hidden shadow-sm">

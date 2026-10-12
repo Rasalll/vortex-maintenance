@@ -1,0 +1,122 @@
+.vortex-associated-section__background {
+  position: absolute;
+  inset: -4% -8% 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 125% 125% at 50% 0%, #f8fafc 50%, rgba(248, 250, 252, 0.78) 68%, transparent 100%),
+    radial-gradient(ellipse 58% 110% at 14% 100%, rgba(19, 255, 170, 0.7), transparent 72%),
+    radial-gradient(ellipse 70% 110% at 88% 100%, rgba(30, 103, 198, 0.72), transparent 72%),
+    radial-gradient(ellipse 52% 95% at 52% 115%, rgba(206, 132, 207, 0.28), transparent 75%),
+    radial-gradient(ellipse 42% 90% at 100% 70%, rgba(221, 51, 92, 0.58), transparent 75%);
+  animation: vortex-associated-gradient-breathe 12s ease-in-out infinite alternate;
+}
+
+@keyframes vortex-associated-gradient-breathe {
+  from { transform: scale(0.96); opacity: 0.78; }
+  to { transform: scale(1.04); opacity: 1; }
+}
+
+.vortex-company-logo-cloud {
+  width: 100%;
+}
+
+.vortex-company-logo-cloud__rule {
+  height: 1px;
+  background: #dfe3eb;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+.vortex-company-logo-cloud__viewport {
+  overflow: hidden;
+  border-block: 1px solid #172033;
+  background: #fff;
+  padding-block: 2rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+}
+
+.vortex-company-logo-cloud__track,
+.vortex-company-logo-cloud__group {
+  display: flex;
+  width: max-content;
+  align-items: center;
+}
+
+.vortex-company-logo-cloud__track {
+  animation: vortex-company-logo-scroll 40s linear infinite;
+  will-change: transform;
+}
+
+.vortex-company-logo-cloud__group {
+  flex: 0 0 auto;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-inline: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.vortex-company-logo-cloud__item {
+  display: inline-flex;
+  min-width: max-content;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.vortex-company-logo-cloud__item img {
+  display: block;
+  width: auto;
+  max-width: 140px;
+  height: auto;
+  max-height: 42px;
+  object-fit: contain;
+}
+
+.vortex-company-logo-cloud__item span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+@keyframes vortex-company-logo-scroll {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@media (max-width: 639px) {
+  .vortex-company-logo-cloud__viewport {
+    padding-block: 1.5rem;
+  }
+
+  .vortex-company-logo-cloud__group {
+    gap: 2rem;
+    padding-inline: 1rem;
+  }
+
+  .vortex-company-logo-cloud__item {
+    min-width: 100px;
+    height: 44px;
+  }
+
+  .vortex-company-logo-cloud__item img {
+    max-width: 140px;
+    max-height: 34px;
+  }
+
+  .vortex-company-logo-cloud__item span {
+    font-size: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vortex-associated-section__background {
+    animation: none;
+  }
+
+  .vortex-company-logo-cloud__track {
+    animation-play-state: paused;
+  }
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useActiveSection } from '@/hooks/useActiveSection';
 
 const LINKS = [
@@ -14,16 +14,14 @@ const LINKS = [
 interface NavbarProps {
   activePage?: 'home' | 'institute' | 'it-solutions' | 'automation';
   onNavigateHome?: () => void;
-  onNavigateServices?: () => void;
 }
 
-export default function Navbar({ activePage = 'home', onNavigateHome, onNavigateServices }: NavbarProps) {
+export default function Navbar({ activePage = 'home', onNavigateHome }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const activeSection = useActiveSection(LINKS.map((l) => l.id));
 
   const isGreenTheme = activePage === 'institute';
-  const showBackToServices = activePage === 'it-solutions' || activePage === 'automation';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -52,12 +50,12 @@ export default function Navbar({ activePage = 'home', onNavigateHome, onNavigate
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? 'pt-2 sm:pt-3 pb-2' : 'pt-4 sm:pt-4 pb-2'
+        scrolled ? 'pt-1.5 pb-1' : 'pt-2 pb-1'
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <nav
-          className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-2 transition-all duration-500 ${
+          className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-1 transition-all duration-500 ${
             scrolled
               ? 'glass border border-slate-200/80 shadow-md shadow-slate-900/5'
               : 'bg-transparent border border-transparent'
@@ -65,7 +63,7 @@ export default function Navbar({ activePage = 'home', onNavigateHome, onNavigate
         >
           {/* Logo Brand */}
           <div className="flex flex-col items-start">
-            <button onClick={() => go('home')} className="flex items-center text-left focus:outline-none group py-1">
+            <button onClick={() => go('home')} className="flex items-center text-left focus:outline-none group py-0.5">
               <img
                 src={
                   isGreenTheme
@@ -73,19 +71,9 @@ export default function Navbar({ activePage = 'home', onNavigateHome, onNavigate
                     : '/logos/webp/vortexx-logo-horizontal-blue-violet.webp'
                 }
                 alt="VORTEX Global Technologies"
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </button>
-            {showBackToServices && (
-              <button
-                type="button"
-                onClick={onNavigateServices ?? onNavigateHome}
-                className="group inline-flex items-center gap-2.5 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-600 shadow-sm transition-all duration-300 hover:text-vortex-purple hover:border-vortex-purple/40 hover:bg-slate-50"
-              >
-                <ArrowLeft className="w-4 h-4 text-vortex-purple transition-transform duration-300 group-hover:-translate-x-1" />
-                Back to Services
-              </button>
-            )}
           </div>
 
           {/* Desktop links */}
