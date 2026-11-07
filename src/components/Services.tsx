@@ -9,14 +9,19 @@ import { ArrowUpRight, Check } from 'lucide-react';
 import ComingSoonModal from './ComingSoonModal';
 import { SERVICES, type Service } from '@/data/services';
 
-type Props = { onOpenInstitute: () => void };
+type Props = {
+  onOpenService: (serviceId: string) => void;
+};
 
-export default function Services({ onOpenInstitute }: Props) {
+export default function Services({ onOpenService }: Props) {
   const [soon, setSoon] = useState<Service | null>(null);
 
   const handleClick = (s: Service) => {
-    if (s.available) onOpenInstitute();
-    else setSoon(s);
+    if (s.available) {
+      onOpenService(s.id);
+    } else {
+      setSoon(s);
+    }
   };
 
   return (
@@ -29,7 +34,7 @@ export default function Services({ onOpenInstitute }: Props) {
         {/* ── 1. Section Header ── */}
         <div className="text-center mb-16">
           <p className="text-vortex-purple font-mono text-xs tracking-[0.3em] uppercase mb-4 font-semibold">
-            // What We Do
+            What We Do
           </p>
           <h2 className="font-display font-bold text-white text-4xl sm:text-6xl lg:text-7xl leading-tight tracking-tight">
             Main <span className="text-vortex-purple text-glow">Services</span>
@@ -51,7 +56,6 @@ export default function Services({ onOpenInstitute }: Props) {
           ))}
         </div>
       </div>
-
 
       {/* Coming Soon Modal */}
       <ComingSoonModal

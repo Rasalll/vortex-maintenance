@@ -1,34 +1,25 @@
-import { BrainCircuit, Users, FolderGit2, Wrench, Rocket, Lightbulb } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
-
-const FEATURES: { icon: LucideIcon; title: string; description: string }[] = [
+const FEATURES: { title: string; description: string }[] = [
   {
-    icon: BrainCircuit,
     title: 'AI Integrated Curriculum',
     description: 'Every program is built around AI tools and workflows from day one.',
   },
   {
-    icon: Users,
     title: 'Expert Mentors',
     description: 'Learn directly from engineers and creators working on real products.',
   },
   {
-    icon: FolderGit2,
     title: 'Real World Projects',
     description: 'Build a portfolio with live, production-grade projects — not toy demos.',
   },
   {
-    icon: Wrench,
     title: '100% Practical Learning',
     description: 'Hands-on, project-first methodology. You build, then you ship.',
   },
   {
-    icon: Rocket,
     title: 'Future Ready Skills',
     description: 'Skills engineered for the AI era — automation, robotics, and beyond.',
   },
   {
-    icon: Lightbulb,
     title: 'Innovation First',
     description: 'A culture that rewards curiosity, experimentation, and bold ideas.',
   },
@@ -52,34 +43,33 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 overflow-x-clip px-1 pb-4">
           {FEATURES.map((f, i) => {
-            const Icon = f.icon;
             return (
               <div
                 key={f.title}
-                className="reveal group relative overflow-hidden rounded-3xl glass-light p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-vortex-purple/30 hover:bg-white hover:shadow-xl"
+                className="reveal feature-stack group"
                 data-reveal-delay={(i % 3) * 100}
               >
-                {/* number watermark */}
-                <span className="absolute -top-2 right-3 font-display font-bold text-7xl text-slate-900/[0.04] select-none">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
+                <span className="feature-stack-layer" aria-hidden="true" />
+                <article className="feature-card flex h-full flex-col justify-between border border-slate-200/80 bg-white p-8 relative overflow-hidden">
+                  {/* Big Service Number */}
+                  <span className="absolute -top-1 right-3 font-display font-bold text-7xl text-slate-900/[0.06] select-none pointer-events-none transition-colors duration-300 group-hover:text-vortex-purple">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
 
-                <div className="relative">
-                  <div className="w-12 h-12 rounded-xl bg-vortex-purple/10 border border-vortex-purple/20 grid place-items-center transition-all duration-500 group-hover:bg-vortex-purple/20 group-hover:scale-110">
-                    <Icon className="w-6 h-6 text-vortex-purple" strokeWidth={1.5} />
+                  <div className="relative z-10 pt-2">
+                    <h3 className="font-display font-bold text-slate-900 text-xl leading-snug transition-colors duration-300 group-hover:text-vortex-purple">
+                      {f.title}
+                    </h3>
+                    <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                      {f.description}
+                    </p>
                   </div>
-                  <h3 className="mt-5 font-display font-semibold text-slate-900 text-lg">
-                    {f.title}
-                  </h3>
-                  <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                    {f.description}
-                  </p>
-                </div>
 
-                {/* bottom glow line */}
-                <div className="absolute bottom-0 left-7 right-7 h-px bg-gradient-to-r from-transparent via-vortex-purple/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* bottom glow line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vortex-purple/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </article>
               </div>
             );
           })}

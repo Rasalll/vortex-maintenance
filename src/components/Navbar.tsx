@@ -7,14 +7,21 @@ const LINKS = [
   { id: 'about', label: 'About' },
   { id: 'services', label: 'Services' },
   { id: 'features', label: 'Why VORTEX' },
-  { id: 'vision', label: 'Vision' },
+  { id: 'enquiry', label: 'Enquiry' },
   { id: 'contact', label: 'Contact' },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  activePage?: 'home' | 'institute' | 'it-solutions' | 'automation';
+  onNavigateHome?: () => void;
+}
+
+export default function Navbar({ activePage = 'home', onNavigateHome }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const active = useActiveSection(LINKS.map((l) => l.id));
+  const activeSection = useActiveSection(LINKS.map((l) => l.id));
+
+  const isGreenTheme = activePage === 'institute';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -25,50 +32,81 @@ export default function Navbar() {
 
   const go = (id: string) => {
     setOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (activePage === 'institute') {
+      if (onNavigateHome) {
+        onNavigateHome();
+      } else {
+        window.history.pushState({ page: 'home' }, '', '/');
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? 'pt-2 sm:pt-3 pb-2' : 'pt-4 sm:pt-4 pb-2'
+        scrolled ? 'pt-1.5 pb-1' : 'pt-2 pb-1'
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <nav
-          className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-2 transition-all duration-500 ${
+          className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-1 transition-all duration-500 ${
             scrolled
               ? 'glass border border-slate-200/80 shadow-md shadow-slate-900/5'
               : 'bg-transparent border border-transparent'
           }`}
         >
           {/* Logo Brand */}
-          <button onClick={() => go('home')} className="flex items-center text-left focus:outline-none group py-0.5">
-            <img
-              src="/src/public/logos/webp/vortexx-logo-horizontal-blue-violet.webp"
-              alt="VORTEX Global Technologies"
-              className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-            />
-          </button>
+          <div className="flex flex-col items-start">
+            <button onClick={() => go('home')} className="flex items-center text-left focus:outline-none group py-0.5">
+              <img
+                src={
+                  isGreenTheme
+                    ? '/logos/webp/vortexx-logo-horizontal-icon-left-compact.webp'
+                    : '/logos/webp/vortexx-logo-horizontal-blue-violet.webp'
+                }
+                alt="VORTEX Global Technologies"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+            </button>
+          </div>
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center justify-center gap-1 sm:gap-1.5">
-            {LINKS.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => go(link.id)}
-                className={`relative px-4 sm:px-4.5 py-2.5 text-[17px] transition-colors duration-300 ${
-                  active === link.id
-                    ? 'text-vortex-purple font-semibold'
-                    : 'text-slate-900 font-medium hover:text-vortex-purple'
-                }`}
-              >
-                {link.label}
-                {active === link.id && (
-                  <span className="absolute left-4 right-4 -bottom-0.5 h-0.5 bg-vortex-purple shadow-glow-sm rounded-full" />
-                )}
-              </button>
-            ))}
+            {LINKS.map((link) => {
+              const isActive = activeSection === link.id && !isGreenTheme;
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => go(link.id)}
+                  className={`relative px-4 sm:px-4.5 py-2.5 text-[17px] transition-colors duration-300 ${
+                    isActive
+                      ? isGreenTheme
+                        ? 'text-vortex-green font-semibold'
+                        : 'text-vortex-purple font-semibold'
+                      : isGreenTheme
+                      ? 'text-slate-900 font-medium hover:text-vortex-green'
+                      : 'text-slate-900 font-medium hover:text-vortex-purple'
+                  }`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span
+                      className={`absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full ${
+                        isGreenTheme
+                          ? 'bg-vortex-green shadow-glow-green'
+                          : 'bg-vortex-purple shadow-glow-sm'
+                      }`}
+                    />
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           {/* Mobile toggle */}
@@ -89,19 +127,26 @@ export default function Navbar() {
           }`}
         >
           <div className="glass rounded-2xl p-4 flex flex-col gap-1 border border-slate-200/80 shadow-lg">
-            {LINKS.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => go(link.id)}
-                className={`text-left px-5 py-3.5 rounded-xl text-[17px] font-medium transition-colors ${
-                  active === link.id
-                    ? 'text-vortex-purple bg-vortex-purple/10 font-semibold'
-                    : 'text-slate-900 hover:text-vortex-purple hover:bg-slate-100'
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
+            {LINKS.map((link) => {
+              const isActive = activeSection === link.id && !isGreenTheme;
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => go(link.id)}
+                  className={`text-left px-5 py-3.5 rounded-xl text-[17px] font-medium transition-colors ${
+                    isActive
+                      ? isGreenTheme
+                        ? 'text-vortex-green bg-vortex-green/10 font-semibold'
+                        : 'text-vortex-purple bg-vortex-purple/10 font-semibold'
+                      : isGreenTheme
+                      ? 'text-slate-900 hover:text-vortex-green hover:bg-slate-100'
+                      : 'text-slate-900 hover:text-vortex-purple hover:bg-slate-100'
+                  }`}
+                >
+                  {link.label}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
