@@ -21,21 +21,36 @@ export interface BusinessCardProfile {
 
 const BUSINESS_CARDS: Record<string, BusinessCardProfile> = {
   arshad_arif: {
-    username: 'arshad_arif',
-    name: 'Arshad Arif',
-    designation: 'Founder & CEO',
-    company: 'VORTEX Global Technologies',
-    phone: '+91 8606 288 788',
-    email: 'arshadceo.vgt@gmail.com',
-    instagram: 'vortex_t_hub',
-    website: 'https://www.vortexglobaltechnologies.in/',
-    companyLogo: '/logos/webp/vortexx-logo-horizontal-blue-violet.webp',
-    qrImage: '/arshad-business-card-qr.png',
-    theme: { accentFrom: '#2563eb', accentTo: '#7c3aed' },
+    username: "arshad_arif",
+    name: "Arshad Arif",
+    designation: "Founder & CEO",
+    company: "VORTEX Global Technologies",
+    phone: "+91 8606 288 788",
+    email: "arshadceo.vgt@gmail.com",
+    instagram: "vortex_t_hub",
+    website: "https://www.vortexglobaltechnologies.in/",
+    companyLogo: "/logos/webp/vortexx-logo-horizontal-blue-violet.webp",
+    qrImage: "/arshad-business-card-qr.png",
+    theme: { accentFrom: "#2563eb", accentTo: "#7c3aed" },
+  },
+  sanoob: {
+    username: "sanoob",
+    name: "Sanob Pookodan",
+    designation: "CTO",
+    company: "VORTEX Global Technologies",
+    phone: "+91 8606 288 788",
+    email: "arshadceo.vgt@gmail.com",
+    instagram: "vortex_t_hub",
+    website: "https://www.vortexglobaltechnologies.in/",
+    companyLogo: "/logos/webp/vortexx-logo-horizontal-blue-violet.webp",
+    qrImage: "/arshad-business-card-qr.png",
+    theme: { accentFrom: "#2563eb", accentTo: "#f00" },
   },
 };
 
 /** Keeps profile retrieval independent from the current static data source. */
-export function getBusinessCardProfile(username: string): BusinessCardProfile | undefined {
+export function getBusinessCardProfile(
+  username: string,
+): BusinessCardProfile | undefined {
   return BUSINESS_CARDS[username.toLowerCase()];
 }
