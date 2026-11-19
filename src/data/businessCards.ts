@@ -1,5 +1,3 @@
-import vortexLogo from '@/public/logos/webp/vortexx-logo-horizontal-blue-violet.webp';
-
 export interface BusinessCardProfile {
   username: string;
   name: string;
@@ -31,7 +29,7 @@ const BUSINESS_CARDS: Record<string, BusinessCardProfile> = {
     email: 'arshadceo.vgt@gmail.com',
     instagram: 'vortex_t_hub',
     website: 'https://www.vortexglobaltechnologies.in/',
-    companyLogo: vortexLogo,
+    companyLogo: '/logos/webp/vortexx-logo-horizontal-blue-violet.webp',
     qrImage: '/arshad-business-card-qr.png',
     theme: { accentFrom: '#2563eb', accentTo: '#7c3aed' },
   },
